@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="qatg_product_form_view" model="ir.ui.view">
+        <field name="name">qatg.product.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook"
+               position="inside">
+
+                <page string="Specifications">
+
+                    <field name="specs_value_ids">
+
+                        <list editable="bottom">
+
+                            <field name="specs_id"/>
+
+                            <field name="value"/>
+
+                            <field name="unit"/>
+
+                        </list>
+
+                    </field>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+    
+    <record id="qatg_product_list_view" model="ir.ui.view">
+        <field name="name">qatg.product.list.view</field>
+        <field name="model">product.template</field>
+    
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+
+                <field name="product_type_selection"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_qatg_product" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <record id="action_qatg_product_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="qatg_product_list_view"/>
+        <field name="act_window_id" ref="action_qatg_product"/>
+    </record>
+    
+    <record id="action_qatg_product_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="qatg_product_form_view"/>
+        <field name="act_window_id" ref="action_qatg_product"/>
+    </record>
+
+    <menuitem
+        id="qatg_product_menu"
+        name="Product"
+        parent="qatg_menu"
+        action="action_qatg_product"/>
+
+</odoo>
+

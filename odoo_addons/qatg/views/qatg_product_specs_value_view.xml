@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qatg_product_specs_value_list_view" model="ir.ui.view">
+        <field name="name">qatg.product.specs.value.list</field>
+        <field name="model">qatg.product.specs.value</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="product_id"/>
+                <field name="specs_id"/>
+                <field name="value"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="qatg_product_specs_value_form_view" model="ir.ui.view">
+        <field name="name">qatg.product.specs.value.form</field>
+        <field name="model">qatg.product.specs.value</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="specs_id"/>
+                        <field name="value"/>
+                        <field name="unit" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+
+
+</odoo>

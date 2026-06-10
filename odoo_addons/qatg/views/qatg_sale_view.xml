@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="qatg_sale_form_view" model="ir.ui.view">
+        <field name="name">qatg.sale.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+    
+        <field name="arch" type="xml">
+
+
+
+            <xpath expr="//page[@name='other_information']"
+                   position="replace"/>
+
+            <xpath expr="//page[@name='customer_signature']"
+                   position="replace"/>
+
+
+        </field>
+    </record>
+    
+    <record id="qatg_sale_list_view" model="ir.ui.view">
+        <field name="name">qatg.sale.list.view</field>
+        <field name="model">sale.order</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_order"/>
+                <field name="amount_total"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_qatg_sale" model="ir.actions.act_window">
+        <field name="name">sales</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <record id="action_qatg_sale_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="qatg_sale_list_view"/>
+        <field name="act_window_id" ref="action_qatg_sale"/>
+    </record>
+
+    <record id="action_qatg_sale_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="qatg_sale_form_view"/>
+        <field name="act_window_id" ref="action_qatg_sale"/>
+    </record>
+
+    <menuitem
+        id="qatg_sale_menu"
+        name="Sales"
+        parent="qatg_menu"
+        action="action_qatg_sale"/>
+
+</odoo>
