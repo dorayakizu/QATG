@@ -36,20 +36,25 @@ class OdooClient:
             method: str,
             endpoint: str,
             json_data: dict | None = None,
-            params: dict | None = None
+            params: dict | None = None,
+            user_login: str | None = None  # BƯỚC 1: Thêm tham số định danh User
     ):
 
-        try:
+        # BƯỚC 2: Cấu hình Header động
+        custom_headers = {}
+        if user_login:
+            custom_headers["X-User-Login"] = user_login
 
+        try:
             response = await self.client.request(
                 method=method,
                 url=f"{settings.ODOO_URL}{endpoint}",
                 json=json_data,
-                params=params
+                params=params,
+                headers=custom_headers  # BƯỚC 3: Truyền header phụ vào (httpx sẽ tự động gộp với X-API-Key ở startup)
             )
 
             if response.status_code >= 400:
-
                 raise HTTPException(
                     status_code=response.status_code,
                     detail=response.text
@@ -58,14 +63,11 @@ class OdooClient:
             return response.json()
 
         except httpx.TimeoutException:
-
             raise HTTPException(
                 status_code=504,
                 detail="Odoo request timeout"
             )
-
         except httpx.ConnectError:
-
             raise HTTPException(
                 status_code=503,
                 detail="Cannot connect to Odoo"

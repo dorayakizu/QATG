@@ -9,23 +9,7 @@
             <xpath expr="//notebook"
                position="inside">
 
-                <page string="Specifications">
 
-                    <field name="specs_value_ids">
-
-                        <list editable="bottom">
-
-                            <field name="specs_id"/>
-
-                            <field name="value"/>
-
-                            <field name="unit"/>
-
-                        </list>
-
-                    </field>
-
-                </page>
 
             </xpath>
 
@@ -41,7 +25,7 @@
             <list>
                 <field name="name"/>
 
-                <field name="product_type_selection"/>
+
             </list>
         </field>
     </record>

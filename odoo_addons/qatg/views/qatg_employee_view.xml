@@ -12,7 +12,6 @@
                 <page string="QATG Information">
 
                     <group>
-                        <field name="social_security"/>
                         <field name="employee_type_selection"/>
                     </group>
 
@@ -30,7 +29,6 @@
                 <field name="name"/>
                 <field name="job_title"/>
                 <field name="work_email"/>
-                <field name="social_security"/>
                 <field name="employee_type_selection"/>
             </list>
         </field>

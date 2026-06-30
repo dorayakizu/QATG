@@ -1,0 +1,253 @@
+/* =========================================
+   1. THANH MENU TRÊN CÙNG (KHẮC PHỤC MENU CON)
+   ========================================= */
+/* Phủ xanh tất cả các lớp bọc và TỪNG CHỮ trên menu */
+.o_navbar,
+.o_navbar .o_menu_sections,
+.o_navbar .o_menu_systray,
+.o_navbar_apps_menu,
+.o_navbar > div,
+.o_navbar > nav,
+.o_navbar > ul,
+.o_navbar .o_nav_entry,
+.o_navbar .nav-link,          /* <-- Thủ phạm giữ màu tím ở đây */
+.o_navbar .dropdown-toggle {
+    background-color: #1f78d1 !important;
+    background-image: none !important;
+    border: none !important;
+}
+
+/* Đảm bảo chữ luôn màu trắng */
+.o_navbar .o_nav_entry,
+.o_navbar .nav-link,
+.o_navbar .dropdown-toggle,
+.o_navbar .o_menu_brand,
+.o_navbar .fa,
+.o_navbar .oi,
+.o_navbar .badge {
+    color: #ffffff !important;
+}
+
+/* Hiệu ứng màu xanh đậm khi chọn hoặc di chuột qua */
+.o_navbar .o_nav_entry.active,
+.o_navbar .nav-link.active,
+.o_navbar .o_nav_entry:hover,
+.o_navbar .nav-link:hover,
+.o_navbar .dropdown-toggle:hover,
+.o_navbar .o_menu_brand:hover,
+.o_navbar .o_navbar_apps_menu button:hover {
+    background-color: #155a9e !important;
+    color: #ffffff !important;
+}
+
+/* =========================================
+   2. ĐỔI MÀU NÚT BẤM CHÍNH (Nút "New", "Save"...)
+   ========================================= */
+.btn-primary,
+.btn-primary:not(:disabled):not(.disabled) {
+    background-color: #1f78d1 !important;
+    border-color: #1f78d1 !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):hover {
+    background-color: #155a9e !important;
+    border-color: #155a9e !important;
+}
+
+/* =========================================
+   3. MENU BÊN TRÁI (SEARCH PANEL) - NỀN TRẮNG
+   ========================================= */
+.o_search_panel,
+.o_search_panel .list-group-item,
+.o_search_panel_section_header {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border-color: #e0e0e0 !important;
+}
+
+.o_search_panel .o_search_panel_label,
+.o_search_panel .o_search_panel_counter {
+    color: #555555 !important;
+}
+
+.o_search_panel .list-group-item.active,
+.o_search_panel .list-group-item.active:hover {
+    background-color: #f0f4f8 !important;
+    color: #1f78d1 !important;
+}
+
+/* =========================================
+   4. NÚT BẤM PHỤ (HOVER SANG MÀU XANH)
+   ========================================= */
+/* Áp dụng cho các nút trắng/xám như "Log note", "Activities", "Pick a skill"... */
+.btn-secondary:hover,
+.btn-light:hover,
+.btn-default:hover {
+    background-color: #1f78d1 !important;
+    border-color: #1f78d1 !important;
+    color: #ffffff !important;
+}
+
+/* Đảm bảo icon bên trong nút phụ cũng chuyển màu trắng khi hover để dễ đọc */
+.btn-secondary:hover i,
+.btn-secondary:hover .fa,
+.btn-light:hover i,
+.btn-light:hover .fa {
+    color: #ffffff !important;
+}
+
+/* =========================================
+   5. ĐỔI MÀU CÁC TAB BÊN DƯỚI (RESUME, WORK INFO...)
+   ========================================= */
+/* Màu chữ khi di chuột qua tab */
+.nav-tabs .nav-link:hover {
+    color: #1f78d1 !important;
+}
+
+/* Màu chữ và gạch chân khi Tab đang được chọn (Active) */
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #1f78d1 !important; /* Đổi màu chữ sang xanh */
+    /* Odoo dùng box-shadow và border để làm vạch màu bên dưới tab */
+    border-bottom-color: #1f78d1 !important;
+    box-shadow: inset 0 -2px 0 #1f78d1 !important;
+}
+
+/* =========================================
+   6. ĐỔI MÀU ICON ORG CHART, CONTACTS VÀ CHỮ HỆ THỐNG
+   ========================================= */
+/* Quét sạch màu tím (màu primary mặc định của Odoo) trên toàn bộ hệ thống */
+.oe_stat_button .o_button_icon,
+.oe_stat_button .fa,
+.oe_stat_button i,
+.text-primary,
+.text-odoo {
+    color: #1f78d1 !important;
+}
+
+/* Đổi nốt màu tím của cái chấm tròn trên dòng Timeline (Experience) */
+.o_Activity_core .o_Activity_iconContainer,
+.bg-primary {
+    background-color: #1f78d1 !important;
+}
+/* =========================================
+   7. ĐỔI MÀU NÚT "NEW" (DẠNG VIỀN) VÀ TIÊU ĐỀ TRANG
+   ========================================= */
+
+/* Đổi màu viền và màu chữ của nút New (dạng outline) trên thanh điều khiển */
+.btn-outline-primary,
+.o_control_panel .o_cp_buttons .btn-primary,
+.o_control_panel .o_cp_buttons .btn-outline-primary,
+.o_control_panel .o_cp_buttons .btn-secondary {
+    background-color: #ffffff !important; /* Giữ nền trắng sạch sẽ */
+    color: #1f78d1 !important;            /* Chữ chuyển sang màu xanh dương */
+    border-color: #1f78d1 !important;     /* Viền chuyển sang màu xanh dương */
+}
+
+/* Hiệu ứng: Khi di chuột vào nút New thì chuyển nền xanh, chữ trắng */
+.btn-outline-primary:hover,
+.o_control_panel .o_cp_buttons .btn-primary:hover,
+.o_control_panel .o_cp_buttons .btn-outline-primary:hover,
+.o_control_panel .o_cp_buttons .btn-secondary:hover {
+    background-color: #1f78d1 !important;
+    color: #ffffff !important;
+}
+
+/* Đổi màu chữ của phần tiêu đề (Breadcrumb: "Employees", icon bánh răng, dấu hỏi) */
+.breadcrumb-item,
+.breadcrumb-item a,
+.breadcrumb-item.active,
+.o_breadcrumb .text-truncate,
+.o_breadcrumb .o_breadcrumb_title,
+.o_control_panel .fa-cog,
+.o_form_uri {
+    color: #1f78d1 !important;
+}
+
+/* Đảm bảo liên kết tiêu đề khi hover cũng giữ màu xanh chứ không bị giật về tím */
+.breadcrumb-item a:hover,
+.o_form_uri:hover {
+    color: #155a9e !important;
+}
+/* =========================================
+   8. ĐỔI MÀU TAB (KHÔNG HOVER), RADIO BUTTON VÀ SỐ STAT BUTTON
+   ========================================= */
+
+/* 1. Màu chữ của tab khi KHÔNG hover và KHÔNG được chọn -> Chuyển sang màu xám đen để dễ nhìn và chuẩn UI */
+.nav-tabs .nav-link:not(.active) {
+    color: #555555 !important;
+}
+
+/* 2. Đổi màu chấm tròn của Radio Button khi được chọn (VD: Individual / Company) */
+.form-check-input:checked,
+.form-check-input[type=radio]:checked,
+input[type="radio"]:checked {
+    background-color: #1f78d1 !important;
+    border-color: #1f78d1 !important;
+}
+
+/* Tùy chỉnh thêm vòng sáng (focus) khi click vào radio button cho đồng bộ xanh */
+.form-check-input:focus {
+    border-color: #155a9e !important;
+    box-shadow: 0 0 0 0.25rem rgba(31, 120, 209, 0.25) !important;
+}
+
+/* 3. Đổi màu các con số (0, $0.00...) bên trong các nút chức năng (Meetings, Sales, Invoiced...) */
+.oe_stat_button .o_stat_value,
+.oe_stat_button .o_stat_info .o_stat_value,
+.oe_stat_button .o_stat_text .text-primary,
+.o_stat_value,
+.text-primary {
+    color: #1f78d1 !important;
+}
+/* =========================================
+   ĐỔI MÀU TÊN SẢN PHẨM VÀ DÃY NÚT THÊM MỚI (ADD PRODUCT, CATALOG...)
+   ========================================= */
+
+/* 1. Đổi màu tên sản phẩm trong bảng (List View) */
+.o_list_table .o_data_cell a,
+.o_list_table .o_data_cell .text-primary {
+    color: #1f78d1 !important;
+}
+
+/* Hiệu ứng khi di chuột vào tên sản phẩm */
+.o_list_table .o_data_cell a:hover,
+.o_list_table .o_data_cell .text-primary:hover {
+    color: #155a9e !important;
+}
+
+/* 2. Đổi màu dãy chữ "Add a product", "Add a section", "Catalog"... */
+.o_field_x2many_list_row_add a,
+.o_field_x2many_list_row_add button,
+.o_field_x2many_list_row_add .btn-link {
+    color: #1f78d1 !important;
+    text-decoration: none !important; /* Xóa gạch chân mặc định nếu có */
+}
+
+/* Hiệu ứng khi di chuột vào dãy chữ thêm mới */
+.o_field_x2many_list_row_add a:hover,
+.o_field_x2many_list_row_add button:hover,
+.o_field_x2many_list_row_add .btn-link:hover {
+    color: #155a9e !important;
+}
+/* =========================================
+   ĐỔI MÀU TÊN SẢN PHẨM TRONG BẢNG (XUYÊN QUA THẺ SPAN)
+   ========================================= */
+
+/* Bắt chính xác thẻ <a> và tất cả các thẻ <span> bên trong cột sản phẩm */
+.o_list_table .o_data_cell a.o_form_uri,
+.o_list_table .o_data_cell a.o_form_uri span,
+.o_list_table .o_field_product_label_section_and_note_cell a,
+.o_list_table .o_field_product_label_section_and_note_cell a span {
+    color: #1f78d1 !important;
+}
+
+/* Hiệu ứng đổi màu xanh đậm khi di chuột qua tên sản phẩm */
+.o_list_table .o_data_cell a.o_form_uri:hover,
+.o_list_table .o_data_cell a.o_form_uri:hover span,
+.o_list_table .o_field_product_label_section_and_note_cell a:hover,
+.o_list_table .o_field_product_label_section_and_note_cell a:hover span {
+    color: #155a9e !important;
+}

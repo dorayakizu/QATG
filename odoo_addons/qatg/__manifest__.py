@@ -16,8 +16,6 @@
     [
         "views/qatg_employee_view.xml",
         "views/qatg_product_view.xml",
-        "views/qatg_product_specs_view.xml",
-        "views/qatg_product_specs_value_view.xml",
         "views/qatg_sale_view.xml",
 
     ],

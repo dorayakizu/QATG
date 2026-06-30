@@ -1,11 +1,7 @@
-from fastapi import APIRouter
-
-from schemas.employee import (
-    EmployeeCreate,
-    EmployeeUpdate
-)
-
+from fastapi import APIRouter, Depends
+from schemas.employee import (EmployeeCreate,EmployeeUpdate)
 from services.odoo_client import (odoo_client)
+from core.dependencies import get_current_user_login
 
 router = APIRouter(
     prefix="/employees",
@@ -21,17 +17,20 @@ async def get_employees(
     name: str | None = None,
     email: str | None = None,
     job_title: str | None = None,
-    department_id: str | None = None,
-    job_id: str | None = None,
-    parent_id: str | None = None,
-    coach_id: str | None = None,
-    company_id: str | None = None,
-    user_id: str | None = None,
+    department_id: int | None = None,
+    job_id: int | None = None,
+    parent_id: int | None = None,
+    coach_id: int | None = None,
+    company_id: int | None = None,
+    user_id: int | None = None,
+    fields: str | None = None,
 
     limit: int = 20,
     offset: int = 0,
     sort_by: str = "id",
-    sort_order: str = "asc"
+    sort_order: str = "asc",
+
+    current_user: str = Depends(get_current_user_login)
 
 ):
 
@@ -42,6 +41,9 @@ async def get_employees(
         "sort_order": sort_order
 
     }
+
+    if fields:
+        params["fields"] = fields
 
     if name:
         params["name"] = name
@@ -69,7 +71,8 @@ async def get_employees(
     return await odoo_client.request(
         "GET",
         "/api/employees",
-        params=params
+        params=params,
+        user_login=current_user
     )
 
 
@@ -78,10 +81,14 @@ async def get_employees(
 # GET ONE
 # ==========================================
 @router.get("/{employee_id}")
-async def get_employee(employee_id: int):
+async def get_employee(
+    employee_id: int,
+    current_user: str = Depends(get_current_user_login) # BỔ SUNG DEPENDS
+):
     return await odoo_client.request(
         "GET",
-        f"/api/employees/{employee_id}"
+        f"/api/employees/{employee_id}",
+        user_login=current_user # TRUYỀN XUỐNG ODOO
     )
 
 # ==========================================
@@ -89,12 +96,14 @@ async def get_employee(employee_id: int):
 # ==========================================
 @router.post("")
 async def create_employee(
-    employee: EmployeeCreate
+    employee: EmployeeCreate,
+    current_user: str = Depends(get_current_user_login) # BỔ SUNG DEPENDS
 ):
     return await odoo_client.request(
         "POST",
         "/api/employees",
-        employee.model_dump()
+        json_data=employee.model_dump(), # Đổi từ biến thứ 3 thành tham số json_data cho chuẩn xác
+        user_login=current_user # TRUYỀN XUỐNG ODOO
     )
 
 # ==========================================
@@ -103,20 +112,26 @@ async def create_employee(
 @router.put("/{employee_id}")
 async def update_employee(
     employee_id: int,
-    employee: EmployeeUpdate
+    employee: EmployeeUpdate,
+    current_user: str = Depends(get_current_user_login) # BỔ SUNG DEPENDS
 ):
     return await odoo_client.request(
         "PUT",
         f"/api/employees/{employee_id}",
-        employee.model_dump(exclude_none=True)
+        json_data=employee.model_dump(exclude_none=True), # Đổi thành json_data
+        user_login=current_user # TRUYỀN XUỐNG ODOO
     )
 
 # ==========================================
 # DELETE
 # ==========================================
 @router.delete("/{employee_id}")
-async def delete_employee(employee_id: int):
+async def delete_employee(
+    employee_id: int,
+    current_user: str = Depends(get_current_user_login) # BỔ SUNG DEPENDS
+):
     return await odoo_client.request(
         "DELETE",
-        f"/api/employees/{employee_id}"
+        f"/api/employees/{employee_id}",
+        user_login=current_user # TRUYỀN XUỐNG ODOO
     )
